@@ -1,34 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
 function App() {
-  const [count, setCount] = useState(0)
+  const dates = [
+    '7/28/2024, 12:00:00 AM',
+    '7/29/2024, 12:00:00 AM',
+    '7/30/2024, 12:00:00 AM',
+    '7/31/2024, 12:00:00 AM',
+    '8/1/2024, 12:00:00 AM',
+    '8/2/2024, 12:00:00 AM',
+    '8/3/2024, 12:00:00 AM',
+    '8/4/2024, 12:00:00 AM',
+    '8/5/2024, 12:00:00 AM',
+    '8/6/2024, 12:00:00 AM',
+  ];
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="w-full min-h-screen flex items-center justify-center">
+      <div className="">
+        <h1>Split space</h1>
+        <ul className="flex gap-2">
+          {dates.map((row, i) => {
+            let date = row.split(' ');
+            const formatted = new Date(date[0]).getDate();
+            return <li key={i}>{formatted}</li>;
+          })}
+        </ul>
+
+        <h1>Split comma space</h1>
+        <ul className="flex gap-2">
+          {dates.map((row, i) => {
+            let date = row.split(', ');
+            const formatted = new Date(date[0]).getDate();
+            return <li key={i}>{formatted}</li>;
+          })}
+        </ul>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
 }
 
